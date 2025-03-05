@@ -1,13 +1,13 @@
 import httpStatus from 'http-status';
 import express, { NextFunction, Request, Response } from 'express'
-import userRouter from './module/user/user.router';
 import authRoute from './module/auth/auth.route';
-
+import userRouter from './module/user/user.router';
+import cors from "cors";
 
 const app = express()
 // middleware
 app.use(express.json())
-
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 // router 
 app.use('/api/user', userRouter)
 app.use('/api/auth', authRoute)

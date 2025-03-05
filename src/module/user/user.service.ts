@@ -1,6 +1,7 @@
 import { IUser } from './user.interface'
 import User from './user.model'
 
+
 const createUser = async (payload: IUser): Promise<IUser> => {
   const result = await User.create(payload)
 
@@ -8,7 +9,7 @@ const createUser = async (payload: IUser): Promise<IUser> => {
 }
 
 const getUser = async () => {
-  const result = await User.find()
+  const result = await User.find({role:"tutor"})
   return result
 }
 
@@ -18,12 +19,17 @@ const getSingleUser = async (id: string) => {
   return result
 }
 
-const updateUser = async (id: string, data: IUser) => {
-  const result = await User.findByIdAndUpdate(id, data, {
-    new: true,
-  })
-  return result
-}
+
+const updateUser = async (email: string, data: IUser) => {
+  console.log(data)
+  const result = await User.findOneAndUpdate(
+    { email },
+    { $set: data},
+    { new: true,runValidators:true }
+  );
+  return result;
+};
+
 
 
 

@@ -2,6 +2,9 @@
 import { Request, Response } from 'express'
 import { userService } from './user.service'
 
+
+
+
 const createUser = async (req: Request, res: Response) => {
   try {
     const payload = req.body
@@ -63,29 +66,33 @@ const getSingleUser = async (req: Request, res: Response) => {
 
 const updateUser = async (req: Request, res: Response) => {
   try {
-    const userId = req.params.userId
-    const body = req.body
-    const result = await userService.updateUser(userId, body)
+    const email = req.params.email;
+    const body = req.body;
+    const result = await userService.updateUser(email, body);
+    if (!result) {
+      res.status(404).json({
+        status: false,
+        message: 'User not found',
+      });
+    }
 
     res.send({
       status: true,
       message: 'User updated successfully',
       result,
-    })
+    });
   } catch (error) {
     res.json({
       status: false,
       message: 'Something went wrong',
       error,
-    })
+    });
   }
-}
-
-
+};
 
 export const userController = {
   createUser,
   getUser,
   getSingleUser,
-  updateUser,
+  updateUser
 }

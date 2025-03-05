@@ -14,9 +14,14 @@ const userSchema = new Schema<IUser>({
     type: String,
     required: [true, 'Please provide your email'],
   },
-  password: { type: String, required: [true, 'Please enter your email'] },
+  password: {
+    type: String,
+    required: [true, 'Please enter your password'],
+    select: false
+  },
   role: {
     type: String,
+    enum: ['student', 'tutor'],
     required: true,
   },
   userStatus: {
@@ -25,7 +30,53 @@ const userSchema = new Schema<IUser>({
     required: true,
     default: 'active',
   },
-})
+  bio: {
+    type: String,
+  },
+  photo: {
+    type: String,
+  },
+  phone: {
+    type: String,
+  },
+  salary: {
+    type: String,
+  },
+  tuition: {
+    type: String,
+    default: "Available"
+  },
+  PreferredTeach: {
+    type: String,
+  },
+  tuitionStyle: {
+    type: String,
+    enum: ['Online', 'Offline', 'Both'],
+    default: "online"
+  },
+  location: {
+    type: String,
+  },
+  experience: {
+    type: String,
+  },
+  subject: {
+    type: String,
+  },
+  availableDays: {
+    type: String,
+  },
+  class: {
+    type: String
+  },
+  rating: {
+    type: Number,
+    min: 0,
+    max: 5,
+  },
+
+});
+
 
 userSchema.pre('save', async function (next) {
   // eslint-disable-next-line @typescript-eslint/no-this-alias
