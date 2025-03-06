@@ -5,7 +5,7 @@ import { userController } from './user.controller'
 const userRouter = Router()
 
 userRouter.post('/create-user', userController.createUser)
-userRouter.get('/:userId', userController.getSingleUser)
+userRouter.get('/get/:userId', userController.getSingleUser)
 userRouter.put("/:email", userController.updateUser);
 userRouter.get('/', userController.getUser)
 

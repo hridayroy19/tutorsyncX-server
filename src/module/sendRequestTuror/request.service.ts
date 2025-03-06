@@ -25,7 +25,7 @@ const sendRequestService = async ({ tutorId, userEmail }: IRequest) => {
     const getRequestsForStudent = async (userEmail: string) => {
       try {
         const requests = await RequestTutor.find({ userEmail }).exec();
-        console.log(requests, "email");
+        // console.log(requests, "email");
         return requests;
       } catch (error) {
         console.error("Error fetching requests:", error);

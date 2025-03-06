@@ -60,7 +60,7 @@ const getRequestsByTutorId = async (req: Request, res: Response) => {
 const getRequestsByStudentEmail = async (req: Request, res: Response) => {
   try {
     const { userEmail } = req.params;
-    console.log(userEmail)
+    // console.log(userEmail)
     const requests = await requestService.getRequestsForStudent(userEmail);
     res.json({
       status: true,
