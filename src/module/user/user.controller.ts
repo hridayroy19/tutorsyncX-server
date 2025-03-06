@@ -3,8 +3,6 @@ import { Request, Response } from 'express'
 import { userService } from './user.service'
 
 
-
-
 const createUser = async (req: Request, res: Response) => {
   try {
     const payload = req.body

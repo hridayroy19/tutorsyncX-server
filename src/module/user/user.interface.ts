@@ -3,14 +3,14 @@ export interface IUser {
   email: string
   password: string
   role: 'student' | 'tutor'
-  userStatus: 'active' | 'inactive'
+  userStatus: string
   // update
   photo: string;
   bio: string;
   phone: string;
   salary: string;
   availableDays: string;
-  tuitionStyle: string;
+  tuitionStyle?: string;
   experience: string;
   subject: string;
   rating: number;

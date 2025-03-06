@@ -26,8 +26,6 @@ const userSchema = new Schema<IUser>({
   },
   userStatus: {
     type: String,
-    enum: ['active', 'inactive'],
-    required: true,
     default: 'active',
   },
   bio: {
@@ -51,7 +49,6 @@ const userSchema = new Schema<IUser>({
   },
   tuitionStyle: {
     type: String,
-    enum: ['Online', 'Offline', 'Both'],
     default: "online"
   },
   location: {

@@ -12,8 +12,8 @@ const regiserIntoDb = async (payload: IUser) => {
 const loginIntoDb = async (payload: { email: string; password: string }) => {
   // console.log(payload);
 
-  // const user = await User.findOne({email:payload?.email}).select('+password')
-  const user = await User.findOne({ email: payload?.email })
+  const user = await User.findOne({email:payload?.email}).select('+password')
+  // const user = await User.findOne({ email: payload?.email })
   console.log(user, "user dataaaaa");
 
   if (!user) {
