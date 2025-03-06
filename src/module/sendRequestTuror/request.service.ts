@@ -22,7 +22,19 @@ const sendRequestService = async ({ tutorId, userEmail }: IRequest) => {
       return requests;
     };
 
+    const getRequestsForStudent = async (userEmail: string) => {
+      try {
+        const requests = await RequestTutor.find({ userEmail }).exec();
+        console.log(requests, "email");
+        return requests;
+      } catch (error) {
+        console.error("Error fetching requests:", error);
+        throw new Error("Failed to fetch requests for the student.");
+      }
+    };
+
 export const requestService = {
     sendRequestService,
-    getRequestsForTutor
+    getRequestsForTutor,
+    getRequestsForStudent
 }

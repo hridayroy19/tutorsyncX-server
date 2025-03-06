@@ -8,6 +8,7 @@ const requestRouter = Router()
 
 requestRouter.post('/create', requestController.createRequest)
 requestRouter.get('/get-requests/:tutorId', requestController.getRequestsByTutorId);
+requestRouter.get('/get/:userEmail', requestController.getRequestsByStudentEmail);
 
 
 export default requestRouter

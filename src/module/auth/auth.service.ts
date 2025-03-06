@@ -38,10 +38,11 @@ const loginIntoDb = async (payload: { email: string; password: string }) => {
   const jwtPayload = {
     email: user?.email,
     role: user?.role,
+    id:user.id
   }
 
   const token = jwt.sign(jwtPayload, 'secrect', { expiresIn: '1d' })
-  const veryfiUser = { neme: user?.name, email: user?.email, role: user?.role }
+  const veryfiUser = { neme: user?.name, email: user?.email, role: user?.role , id:user?.id }
 
   return { token, veryfiUser }
 }

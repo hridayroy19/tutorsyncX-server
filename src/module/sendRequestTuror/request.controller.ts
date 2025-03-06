@@ -57,9 +57,29 @@ const getRequestsByTutorId = async (req: Request, res: Response) => {
   }
 };
 
+const getRequestsByStudentEmail = async (req: Request, res: Response) => {
+  try {
+    const { userEmail } = req.params;
+    console.log(userEmail)
+    const requests = await requestService.getRequestsForStudent(userEmail);
+    res.json({
+      status: true,
+      message: "Requests fetched successfully",
+      data: requests,
+    });
+  } catch (error) {
+    res.json({
+      status: false,
+      message: 'Something went wrong',
+      error,
+    });
+  }
+};
+
 
 export const requestController = {
   createRequest,
-  getRequestsByTutorId
+  getRequestsByTutorId,
+  getRequestsByStudentEmail
 };
 
